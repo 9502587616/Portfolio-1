@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student list</title>
+     <br>
+
+
+
+
+<br
+import React, { useState, useEffect } from "react";
+import { Table, Input, Button } from "reactstrap";
+
+const fetchData = async () => {
+  // Simulated data fetching, replace with your actual data fetching logic
+  const response = await fetch("your_api_endpoint");
+  const data = await response.json();
+  return data;
+};
+<br
+const App = () => {
+  const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(20);
+
+  useEffect(() => {
+    const getData = async () => {
+      const fetchedData = await fetchData();
+      setData(fetchedData);
+    };
+    getData();
+  }, []);
+
+  const indexOfLastRecord = currentPage * perPage;
+  const indexOfFirstRecord = indexOfLastRecord - perPage;
+  const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const filteredData = currentRecords.filter((record) =>
+    record.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="container mt-5">
+      <Input
+        type="text"
+        placeholder="Search by name"
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+     </react>
+
+
+     <h1>this is html table</h1>
+     <style>table,th,td {border: 1px solid black;}
+     </style>
+     <table style="width: 500px">
+        <tr>
+            <th>Sno</th>
+            <th>Customer Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>Rama ganga</th>
+            <th>21</th>
+            <th>9542113983</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>Arunachlam</th>
+            <th>21</th>
+            <th>886918131</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>pavan</th>
+            <th>24</th>
+            <th>9025871438</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>4</th>
+            <th>vasu</th>
+            <th>24</th>
+            <th>9542119856</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>Anil</th>
+            <th>24</th>
+            <th>9589237143</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>6</th>
+            <th>mahesh</th>
+            <th>23</th>
+            <th>9578967833</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>7</th>
+            <th>Kalyani</th>
+            <th>24</th>
+            <th>9589357689</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>8</th>
+            <th>Padmaraju</th>
+            <th>21</th>
+            <th>9502587616</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>9</th>
+            <th>praveen kumar</th>
+            <th>21</th>
+            <th>9490582016</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>10</th>
+            <th>Gova raju</th>
+            <th>21</th>
+            <th>9897898765</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>11</th>
+            <th>Narendra</th>
+            <th>21</th>
+            <th>9908978567</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>12</th>
+            <th>Vijaya narayana</th>
+            <th>21</th>
+            <th>8909876289</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>13</th>
+            <th>satish</th>
+            <th>21</th>
+            <th>9567890890</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>14</th>
+            <th>Sai ganesh</th>
+            <th>21</th>
+            <th>7898775890</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>15</th>
+            <th>Ravi kumar</th>
+            <th>21</th>
+            <th>954298789</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>16</th>
+            <th>Bhagayaraju</th>
+            <th>21</th>
+            <th>992345678</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+         <tr>
+            <th>17</th>
+            <th>Reddy ajay</th>
+            <th>21</th>
+            <th>8096512399</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+         <tr>
+            <th>18</th>
+            <th>Chakri</th>
+            <th>21</th>
+            <th>9578965783</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+         <tr>
+            <th>19</th>
+            <th>Sunitha</th>
+            <th>21</th>
+            <th>8978902378</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>20</th>
+            <th>Devi sri</th>
+            <th>21</th>
+            <th>8765498767</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>21</th>
+            <th>Deviya</th>
+            <th>21</th>
+            <th>9894567898</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>22</th>
+            <th>Bhanu sri</th>
+            <th>21</th>
+            <th>923456890</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>23</th>
+            <th>Prasana kumar</th>
+            <th>21</th>
+            <th>9783934698</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>24</th>
+            <th>Vinod</th>
+            <th>21</th>
+            <th>9893456898</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>25</th>
+            <th>Somaraju</th>
+            <th>21</th>
+            <th>8097643473</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>26</th>
+            <th>Nooka raju</th>
+            <th>21</th>
+            <th>9873445897</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>27</th>
+            <th>Veera raju</th>
+            <th>21</th>
+            <th>8909754090</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>28</th>
+            <th>Anusha</th>
+            <th>21</th>
+            <th>6789345687</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>29</th>
+            <th>Rama lakshmi</th>
+            <th>21</th>
+            <th>9367489567</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>30</th>
+            <th>Gouri lakshimi</th>
+            <th>21</th>
+            <th>9567892349</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+        <tr>
+            <th>31</th>
+            <th>Surya kiran</th>
+            <th>21</th>
+            <th>9783456789</th>
+            <th>India</th>
+            <th>1-3-2024</th>
+            <th>11.30pm</th>
+        </tr>
+
+    </head>
+    <body>
+
+     <button>click the name </button>
+     <button style="width: 5px; height: 2px; align-items: 
+     centre"></button>
+
+
+    <label for="list select name"> select name</label><br>
+    <input type="button" id:"select name" value="select name"><br>
+    <input type="submit" value="sumbit">
+
+
+
+
+        {data.map((record) => (
+            <tr key={record.sno}> 
+                <td>{record.sno}</td>
+                <td>{record['customer name']}</td>
+                <td>{record.age}</td>
+                <td>{record.phone}</td>
+                <td>{record.location}</td>
+                <td>{new Date(record.created_at).toLocaleDateString()}</td>
+                <td>{new Date(record.created_at.toLocaleTimeString()}</td>
+            </tr>
+            ))}
+    </body>
+  </table>
+  <nav>
+    <ul className="pagination">
+      {Array.from({ length: Math.ceil(data.length / perPage) }).map(
+        (page, index) => (
+          <li key={index} className="page-item">
+            <Button
+              className="page-link"
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </Button>
+          </li>
+        )
+      )}
+    </ul>
+  </nav>
+</div>
+);
+};
+export default App;
+
+</html>
